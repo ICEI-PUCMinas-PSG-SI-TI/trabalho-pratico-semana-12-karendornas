@@ -63,6 +63,122 @@
         </div>
     </footer>
 
-    
+    <script>
+        const USUARIO_ATUAL = "USUÁRIO X.";
+        const container = document.getElementById("comentarios_container");
+        const form = document.getElementById("form_comentario");
+
+        async function carrega_dados() {
+            try {
+                const res = await fetch('http://localhost:3000/comentarios?_sort=id&_order=asc');
+                const comentarios = await res.json();
+                container.innerHTML = '';
+
+                comentarios.forEach(comentario => {
+                    const bloco = document.createElement('div');
+                    bloco.classList.add('mb-4');
+
+                    const cabecalho = document.createElement('div');
+                    cabecalho.classList.add('usuario');
+                    cabecalho.innerHTML = `<strong>${comentario.user}</strong>`; // ✅ corrigido com crase
+
+                    const conteudo = document.createElement('div');
+                    conteudo.classList.add('conteudo');
+                    conteudo.textContent = comentario.descricao;
+
+                    bloco.appendChild(cabecalho);
+                    bloco.appendChild(conteudo);
+
+                    if (comentario.user === USUARIO_ATUAL) {
+                        const botoes = document.createElement('div');
+                        botoes.classList.add('mt-2');
+
+                        const btnEditar = document.createElement('button');
+                        btnEditar.textContent = "Editar";
+                        btnEditar.classList.add('btn', 'btn-sm', 'btn-primary', 'me-2');
+                        btnEditar.onclick = () => editarComentario(comentario.id, comentario.descricao);
+
+                        const btnDeletar = document.createElement('button');
+                        btnDeletar.textContent = "Deletar";
+                        btnDeletar.classList.add('btn', 'btn-sm', 'btn-danger');
+                        btnDeletar.onclick = () => deletarComentario(comentario.id);
+
+                        botoes.appendChild(btnEditar);
+                        botoes.appendChild(btnDeletar);
+                        bloco.appendChild(botoes);
+                    }
+
+                    container.appendChild(bloco);
+                });
+            } catch (erro) {
+                console.error("Erro ao carregar comentários:", erro);
+                container.innerHTML = '<p>Erro ao carregar comentários.</p>';
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const texto = document.getElementById('comentario_texto').value.trim();
+            if (!texto) {
+                alert("Digite algo!");
+                return;
+            }
+
+            try {
+                const res = await fetch('http://localhost:3000/comentarios?_sort=id&_order=desc&_limit=1');
+                const [ultimo] = await res.json();
+                const novoComentario = {
+                    id: ultimo ? ultimo.id + 1 : 1,
+                    user: USUARIO_ATUAL,
+                    descricao: texto
+                };
+
+                const post = await fetch('http://localhost:3000/comentarios', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(novoComentario)
+                });
+
+                if (!post.ok) throw new Error("Erro ao salvar comentário.");
+
+                document.getElementById('comentario_texto').value = "";
+                carrega_dados();
+                alert("Comentário enviado com sucesso!");
+            } catch (err) {
+                console.error("Erro:", err);
+                alert("Erro ao enviar.");
+            }
+        });
+
+        function editarComentario(id, textoAtual) {
+            const novoTexto = prompt("Edite seu comentário:", textoAtual);
+            if (novoTexto && novoTexto.trim()) {
+                fetch(`http://localhost:3000/comentarios/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ descricao: novoTexto.trim() })
+                })
+                .then(res => {
+                    if (res.ok) carrega_dados();
+                })
+                .catch(err => console.error("Erro ao editar:", err));
+            }
+        }
+
+        function deletarComentario(id) {
+            if (confirm("Tem certeza que deseja excluir?")) {
+                fetch(`http://localhost:3000/comentarios/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => {
+                    if (res.ok) carrega_dados();
+                })
+                .catch(err => console.error("Erro ao deletar:", err));
+            }
+        }
+
+        window.onload = carrega_dados;
+    </script>
+
 </body>
 </html>
