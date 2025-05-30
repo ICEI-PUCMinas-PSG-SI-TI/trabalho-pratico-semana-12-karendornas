@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Filme</title>
+    <link rel="stylesheet" href="detalhes.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="teste1">
+            <a class="movie" href="index.html" style="font-size: 36px;">KEY MOVIE</a>
+        </div>
+
+        <div class="teste2">
+            <img src=".\Imagens\perfil.jpg" alt="image" id="perfil">
+            <a class="nome" href="#">USUÁRIO</a>
+        </div>
+    </header>
+
+    <main>
+        <img alt="image" id="foto1">
+        <div class="botoes">
+            <button class="btn">ASSISTIR AGORA</button>
+            <button class="btn">ADICIONAR À LISTA</button>
+        </div>  
+        <h1 id="nome_filme">NOME DO FILME</h1>
+        <div class="ano_dir">
+            <h2 id="ano">ANO: </h2>
+            <h2 id="diretor">DIRETOR: </h2>
+        </div>
+        <h2 class="sobre_filme">SOBRE O FILME</h2>
+        <p id="descricao">DESCRIÇÃO</p>
+    </main>
+
+    <footer>
+        <h4 id="inf_aluna">INFORMAÇÕES DA ALUNA</h4>
+        <div class="total">
+            <div class="esquerda">
+                <h5 class="titulo">SOBRE</h5>
+                <div id="sobre">ESTE SITE FOI DESENVOLVIDO POR UMA ESTUDANTE DO CURSO DE SISTEMAS DE INFORMAÇÃO DA PUC MINAS, COMO PARTE DE UM PROJETO ACADÊMICO DA DISCIPLINA DE DESENVOLVIMENTO DE INTERFACES WEB.</div>
+            </div>
+            <div class="foto_karen"><img src="Imagens\karen.jpg" alt="Foto Karen" id="karen"></div>
+            <div class="direita">
+                <h5 class="titulo1">AUTORIA</h5>
+                <div class="autoria">ALUNA: KAREN DORNAS OLIVEIRA</div>
+                <div class="autoria">CURSO: SISTEMAS DE INFORMAÇÃO</div>
+                <div class="autoria">TURMA: MANHÃ</div>
+                <h5 class="titulo1">REDES SOCIAIS</h5>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        var dados = [];
+
+        fetch('http://localhost:3000/dados')
+            .then(res => res.json())
+            .then(json => {
+                dados = json; 
+
+                let id = new URLSearchParams(location.search).get('id')
+                let dado = dados.find(item => item.id == id)
+                if(dado){
+                    document.getElementById("foto1").src = dado.imagem
+                    document.getElementById("nome_filme").innerHTML = dado.titulo
+                    document.getElementById("ano").innerHTML = `ANO: ${dado.ano_lancamento}`
+                    document.getElementById("diretor").innerHTML = `DIRETOR: ${dado.diretor}`
+                    document.getElementById("descricao").innerHTML = dado.descricao
+                }
+                else{
+                    alert("Filme não encontrado!");
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao carregar os dados:', error);
+                alert('Erro ao carregar os dados.');
+            });
+
+    </script>
+</body>
+</html>

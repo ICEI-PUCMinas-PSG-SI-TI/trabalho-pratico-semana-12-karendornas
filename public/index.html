@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente de API</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> -->
+    <!-- CSS only -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">     -->
+</head>
+
+<body onload="carrega_dados()">
+    <header class="home">
+            <a class="movie" href="index.html" style="margin-right: -10%; font-size: 36px;">KEY MOVIE</a>
+            <a class="nome" href="#" style="padding-left: 10%;">USUÁRIO</a>
+
+            <img src=".\Imagens\perfil.jpg" alt="image" id="perfil">
+    </header>
+
+    <main>
+        <div class="avaliacoes">
+            <button id="avalia" onclick="">AVALIAÇÕES</button>
+        </div>
+
+        <nav class="search-box">
+
+            <input type="text" class="search-cat" placeholder="BUSQUE POR CATEGORIA">
+            <button class="btn-enter1">BUSCAR</button>
+            <input type="text" class="search-nome" placeholder="BUSQUE POR NOME">
+            <button class="btn-enter">BUSCAR</button>
+        </nav>
+        <article id="meu-article" onclick="detalhe_filme(this, event)">
+            <button class="left" onclick="troca_filme_left()">&lt</button>
+            
+            <!-- <img src=".\Imagens\attack.jpg" alt= image id="destaque"> -->
+            <!-- <img src="./Imagens/fundo-preto.png" alt=fundo id="fundo"> -->
+            <div class="descricao">
+                <!-- <h1><a id="name" href="#"></a></h1> -->
+                <!-- <p id="sinopse"></p> -->
+                <nav class="lista">
+                    <h2><a class="assistir" href="#">ASSISTIR AGORA</a></h2>
+                    <h2><a class="add" href="#">ADICONAR À LISTA</a></h2>
+                </nav>
+            </div>
+            <button class="right" onclick="troca_filme_right()">&gt</button>
+        </article>
+        <section>
+            <div class="alta">
+                <h3>EM ALTA</h3>
+                <div class="picture">
+                    <img class="imagem" src="./Imagens/wicked_home.jpg" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="./Imagens/ainda_estou_home.jpg" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="./Imagens/oppeheimer_home.jpg" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="./Imagens/barbie_home.jpg" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    </div>
+                </div>
+            </div>
+            <div class="continue">
+                <h3>CONTINUAR ASSISTINDO</h3>
+                <div class="picture">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                </div>
+            </div>
+            <div class="minha-lista">
+                <h3>MINHA LISTA</h3>
+                <div class="picture">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                </div>
+            </div>
+            <div class="recomen">
+                <h3>RECOMENDAÇÕES</h3>
+                <div class="picture">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" src="https://picsum.photos/200/300" alt="image" onclick="detalhe_filme(this, event)">
+                    <img class="imagem" alt="image" onclick="detalhe_filme(this, event)">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h4 id="inf_aluna">INFORMAÇÕES DA ALUNA</h4>
+        <div class="total">
+            <div class="esquerda">
+                <h5 class="titulo">SOBRE</h5>
+                <div id="sobre">ESTE SITE FOI DESENVOLVIDO POR UMA ESTUDANTE DO CURSO DE SISTEMAS DE INFORMAÇÃO DA PUC MINAS, COMO PARTE DE UM PROJETO ACADÊMICO DA DISCIPLINA DE DESENVOLVIMENTO DE INTERFACES WEB.</div>
+            </div>
+            <div class="foto_karen"><img src="Imagens\karen.jpg" alt="Foto Karen" id="karen"></div>
+            <div class="direita">
+                <h5 class="titulo1">AUTORIA</h5>
+                <div class="autoria">ALUNA: KAREN DORNAS OLIVEIRA</div>
+                <div class="autoria">CURSO: SISTEMAS DE INFORMAÇÃO</div>
+                <div class="autoria">TURMA: MANHÃ</div>
+                <h5 class="titulo1">REDES SOCIAIS</h5>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function detalhe_filme(movie, event){
+            const ignorarTags = ['BUTTON', 'A'];
+    
+            if (ignorarTags.includes(event.target.tagName)) {
+                return; // Ignora o clique se for em botão ou link
+            }
+
+            const url = `detalhes.html?id=${movie.getAttribute('image-id')}`;
+            window.location.href = url;
+        }
+    </script>
+
+    <script>
+
+        document.getElementById("avalia").addEventListener("click", function () {
+            window.location.href = "cadastro_dados.html";
+        });
+
+        var dados = [];
+        var indice = 16;
+
+        function carrega_dados() {
+            fetch('http://localhost:3000/dados')
+                .then(res => res.json())
+                .then(json => {
+                    dados = json; 
+
+                document.querySelectorAll('.imagem').forEach((img, index) => {
+                    if (dados[index]) {
+                        img.src = dados[index].imagem_home
+                        img.setAttribute("image-id", dados[index].id)
+                    }
+                });
+
+
+                document.getElementById("meu-article").style.backgroundImage = `url(${dados[indice].imagem})`;
+                document.getElementById("meu-article").setAttribute("image-id", dados[indice].id)
+                // document.getElementById("name").innerHTML = dados[indice].titulo;
+                // document.getElementById("sinopse").innerHTML = dados[indice].descricao;
+            })
+
+            .catch(error => {
+                console.error("Erro ao carregar os dados:", error);
+            });
+        }
+
+        function troca_filme_left(){
+            indice = 14 + ((indice - 1 - 14 + 3) % 3);
+            document.getElementById("meu-article").style.backgroundImage = `url(${dados[indice].imagem})`;
+            document.getElementById("meu-article").setAttribute("image-id", indice)
+            // document.getElementById("name").innerHTML = dados[indice].titulo;
+            // document.getElementById("sinopse").innerHTML = dados[indice].descricao;
+        }
+
+        function troca_filme_right(){
+            indice = 14 + ((indice + 1 - 14 + 3) % 3);
+            document.getElementById("meu-article").style.backgroundImage = `url(${dados[indice].imagem})`;
+            document.getElementById("meu-article").setAttribute("image-id", indice)
+            // document.getElementById("name").innerHTML = dados[indice].titulo;
+            // document.getElementById("sinopse").innerHTML = dados[indice].descricao;
+        }
+    </script>
+
+    <script>
+        // Abordagem FETCH
+        // console.log ('Começou')
+
+        // fetch ('https://api.themoviedb.org/3/movie/popular?api_key=9c2c75d9d67c3f98cc98bb29450115c5&language=pt-BR')
+        //    .then(res => res.json ())
+        //    .then(data => {
+        //         console.log ('Imprimindo filmes')
+        //         let str = ''
+        //         for (let i = 0; i < data.results.length; i++) {
+        //             let filme = data.results[i]
+        //             str += `<div class="card col-md-4" style="width: 18rem;">
+        //                 <img src="https://image.tmdb.org/t/p/w500${filme.poster_path}" class="card-img-top" alt="...">
+        //                 <div class="card-body">
+        //                     <h5 class="card-title">${filme.title}</h5>
+        //                     <p class="card-text">${filme.overview}</p>
+        //                     <a href="https://www.themoviedb.org/movie/${filme.id}" target="_blank" class="btn btn-primary">Mais detalhes</a>
+        //                 </div>
+        //                 </div>`
+        //         }
+        //         document.getElementById('tela').innerHTML = str
+        //    })
+           
+        // console.log ('Terminou')
+
+        // Abordagem JQUERY
+        // $.ajax({
+        //     url: 'https://api.github.com/users/rommelcarneiro'
+        // })
+        // .done (response => {
+        //     console.log('Biografia: ' + response.bio)
+        //     document.getElementById('tela').innerHTML = response.bio
+        // })
+
+
+        // Abordagem XHR
+        // let xhr = new XMLHttpRequest()
+        // xhr.onload = function (event) {
+        //     let data = JSON.parse (event.target.response)
+        //     console.log (data.bio)
+        //     document.getElementById('tela').innerHTML = data.bio
+        // }
+        // xhr.open ('GET', 'https://api.github.com/users/rommelcarneiro')
+        // xhr.send ()
+    </script>
+</body>
+</html>

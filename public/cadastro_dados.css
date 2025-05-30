@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white
+}
+
+body{
+    margin: 0px;
+    background-color: rgb(34, 4, 48);
+}
+
+header{
+    background-color: black;    
+    display: flex; 
+    position: relative;
+    font-size: 25px;
+    padding: 7px 35px 20px;
+    width: 100%;
+    height: 80px;
+}
+
+.movie{
+    padding-left: 3.8%;
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 0.4%;
+    font-family: "K2D", sans-serif;
+}
+
+#perfil{
+    margin-left: 80.6%;
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    overflow: hidden;
+    position:absolute;
+}
+
+.nome{
+    margin-left: 80%;
+    padding-top: 1%;
+    color: white;
+    text-decoration: none;
+    /* padding-right: 0.5%; */
+    font-family: "Inter", sans-serif;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    /* width: 100%;
+    height: 500px; */
+}
+
+h4{
+    background-color: red;
+}
+
+footer{
+    /* margin-top: 2%; */
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 2%; */
+    background-color: black;
+    font-family: "K2D", sans-serif;
+    height: 360px;
+}
+
+.total{
+    display: flex;
+    flex-direction: row;
+}
+
+#inf_aluna{
+    padding-left: 10%;
+    font-size: 30px;
+}
+
+#sobre{
+    margin-right: 20%;
+    margin-left: 20%;
+    padding-top: 1%;
+}
+
+.autoria{
+    width: 300%;
+    height: 40px;
+    padding-top: 5%;
+}
+
+.esquerda{
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+    margin-left: 15%;
+}
+
+.direita{
+    padding-top: 1%;
+    margin-right: 20%;
+}
+
+#info{
+    display: flex;
+    flex-direction: row;
+    padding-top: 1%;
+}
+
+#sobre{
+    padding-top: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.titulo{
+    background-color: rgb(34, 4, 48);
+    text-align: center;
+    font-size: 25px;
+}
+
+.titulo1{
+    background-color: rgb(34, 4, 48);
+    text-align: center;
+    font-size: 25px;
+    width: 300%;
+}
+
+.foto_karen{
+    display: flex;
+    position: static;
+    width: 200px;
+    height: 200px;
+    margin-right: 15%;
+    padding-left: 15%;
+}
+
+#karen{
+    padding-top: 2%;
+    border-radius: 100%;
+}
+
+.autor{
+    display: flex;
+    flex-direction: row;
+    position:relative;
+    font-size: 25px;
+    padding: 7px 35px 20px 0;
+    background-color: rgb(86, 12, 121);
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    padding-left: 695px;
+    padding-right: 695px;
+    justify-content:center; 
+    justify-content: space-between;
+}

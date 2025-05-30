@@ -9,6 +9,7 @@ Nesta atividade, você irá completar o projeto anterior permitindo cadastrar e 
 - Matricula:
 - Proposta de projeto escolhida:
 - Breve descrição sobre seu projeto:
+- Usar: npx json-server --watch ./db/db.json --port 3000
 
 **Print do testes da API com Postman ou similar**
 
