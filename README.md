@@ -5,10 +5,10 @@ Nesta atividade, você irá completar o projeto anterior permitindo cadastrar e 
 
 ## Informações do trabalho
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Karen Dornas Oliveira
+- Matricula: 1599584
+- Proposta de projeto escolhida: Catálogo de Filmes
+- Breve descrição sobre seu projeto: O nome deste projeto é KEY MOVIE. Ele consiste em um site de catálogo de filmes. A plataforma permite filtrar filmes por categoria e nome, oferecendo uma busca mais personalizada, disponível após login. Além de assistir ao trailer, é possível ser redirecionado para o site onde o filme completo está disponível. Ao clicar no filme, o usuário pode visualizar a sinopse e outros detalhes importantes. O site também possibilita adicionar filmes a uma lista, armazenando aqueles que você começou a assistir, além de recomendar os títulos mais populares do momento.
 - Usar: npx json-server --watch ./db/db.json --port 3000
 
 **Print do testes da API com Postman ou similar**
@@ -23,7 +23,7 @@ Nesta atividade, você irá completar o projeto anterior permitindo cadastrar e 
 
 **Print da aba NETWORK com requisições Fetch/XHR de POST**
 
-<<  COLOQUE A IMAGEM AQUI >>
+![Print NETWORK](./public/Imagens/NETWORK%202.jpg)
 
 ## **Orientações Gerais**
 
